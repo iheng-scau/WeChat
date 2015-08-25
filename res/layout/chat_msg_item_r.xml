@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp">
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+        <TextView 
+            android:id="@+id/tv_msg_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="10sp"
+            android:padding="2dp"
+            android:background="#D7D7D7"
+            android:textColor="#ffffff"
+            android:text="2015年7月12日  22:31"/>
+    </RelativeLayout>
+
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        
+        <ImageView 
+            android:id="@+id/portrait_view"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/wechat_icon"
+            android:focusable="false"/>
+        
+        <TextView 
+            android:id="@+id/tv_usr_name"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/portrait_view"
+            android:layout_marginRight="10dp"
+            android:textColor="#A8A8A8"
+            android:text="iheng"/>
+        
+        <TextView 
+            android:id="@+id/tv_msg_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/portrait_view"
+            android:padding="10dp"
+            android:layout_marginRight="5dp"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:layout_below="@id/tv_usr_name"
+            android:background="@drawable/msg_bg_r"
+            android:text="msg_txt"/>
+    </RelativeLayout>
+</LinearLayout>
