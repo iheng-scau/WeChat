@@ -1,6 +1,7 @@
 package org.iheng.wechat.fragments;
 
 
+import java.net.Socket;
 import java.util.ArrayList;
 
 import org.iheng.wechat.R;
@@ -19,6 +20,8 @@ import android.widget.ListView;
 
 public class ChatFragment extends Fragment {
 
+	private Socket socket;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -41,5 +44,9 @@ public class ChatFragment extends Fragment {
 			}	
 		});
 		return view;
+	}
+	
+	private void initSocket(){
+		
 	}
 }

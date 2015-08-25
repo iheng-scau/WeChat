@@ -1,5 +1,6 @@
 package org.iheng.wechat.activities;
 
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +30,7 @@ public class ChatActivity extends Activity {
 	private EditText et_msg;
 	private ListView list_conversation;
 	private ConversationListAdapter adapter;
+	private Socket socket;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +99,7 @@ public class ChatActivity extends Activity {
 			}
 		});
 	}
+	
 	
 	
 	class ConversationListAdapter extends BaseAdapter{
