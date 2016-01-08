@@ -7,8 +7,7 @@ import org.iheng.wechat.fragments.ChatFragment;
 import org.iheng.wechat.fragments.ContactsFragment;
 import org.iheng.wechat.fragments.FoundFragment;
 import org.iheng.wechat.fragments.SettingsFragment;
-
-import com.astuetz.PagerSlidingTabStrip;
+import org.iheng.wechat.nio.client.MessageClient;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,6 +22,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 
+import com.astuetz.PagerSlidingTabStrip;
+
 
 public class MainActivity extends FragmentActivity {
 	
@@ -32,6 +33,8 @@ public class MainActivity extends FragmentActivity {
 	private SettingsFragment settingsFragment;
 	private PagerSlidingTabStrip tabs;
 	private DisplayMetrics dm;
+	
+	private MessageClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,19 @@ public class MainActivity extends FragmentActivity {
 		pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 		tabs.setViewPager(pager);
 		setTabsValue();
+		
+		new Thread(){
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				client=new MessageClient(8001);
+				Thread clientDeamon=new Thread(client);
+				clientDeamon.setName("client-deamon");
+				clientDeamon.start();
+			}
+			
+		}.start();
+		
     }
 
     
