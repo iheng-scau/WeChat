@@ -7,7 +7,7 @@ import org.iheng.wechat.fragments.ChatFragment;
 import org.iheng.wechat.fragments.ContactsFragment;
 import org.iheng.wechat.fragments.FoundFragment;
 import org.iheng.wechat.fragments.SettingsFragment;
-import org.iheng.wechat.nio.client.MessageClient;
+import org.iheng.wechat.nio.client.MsgServiceClientDaemon;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity {
 	private PagerSlidingTabStrip tabs;
 	private DisplayMetrics dm;
 	
-	private MessageClient client;
+	private MsgServiceClientDaemon client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				client=new MessageClient(8001);
+				client=new MsgServiceClientDaemon(8001);
 				Thread clientDeamon=new Thread(client);
 				clientDeamon.setName("client-deamon");
 				clientDeamon.start();
@@ -168,5 +168,4 @@ public class MainActivity extends FragmentActivity {
 		}
 		return super.onMenuOpened(featureId, menu);
 	}
-    
 }

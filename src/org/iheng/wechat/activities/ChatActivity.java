@@ -7,7 +7,7 @@ import java.util.Date;
 
 import org.iheng.wechat.R;
 import org.iheng.wechat.entities.WeChatMessage;
-import org.iheng.wechat.nio.client.MessageClient;
+import org.iheng.wechat.nio.client.MsgServiceClientDaemon;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -96,7 +96,7 @@ public class ChatActivity extends Activity {
 				WeChatMessage message=new WeChatMessage(str_timestamp,"iheng",msg_txt);
 				adapter.msg_list.add(message);
 				adapter.notifyDataSetChanged();
-				MessageClient.sQueue.offer(message);
+				MsgServiceClientDaemon.sQueue.offer(message);
 			}
 		});
 	}
@@ -135,8 +135,8 @@ public class ChatActivity extends Activity {
 			
 			WeChatMessage msg=(WeChatMessage)getItem(position);
 			tv_timestamp.setText(msg.getTimestamp());
-			tv_usr_name.setText(msg.getUsr_name());
-			tv_msg_content.setText(msg.getMsg_content());
+			tv_usr_name.setText(msg.getFormUser());
+			tv_msg_content.setText(msg.getMsgContent());
 			
 			return convertView;
 		}
